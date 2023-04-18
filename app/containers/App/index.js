@@ -9,14 +9,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import demo from 'containers/Demo/Loadable';
 import signup from 'containers/Signup/Loadable';
-import login from 'containers/Login/Loadable'
+import login from 'containers/Login/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -34,21 +34,20 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
+      <Helmet titleTemplate="%s" defaultTitle="React.js Boilerplate">
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       {/* <Header /> */}
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="/demo" component={demo} />
-        <Route path="/signup" component={signup} />
-        <Route path="/login" component={login} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/features" component={FeaturePage} />
+          <Route path="/demo" component={demo} />
+          <Route path="/signup" component={signup} />
+          <Route path="/login" component={login} />
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </BrowserRouter>
       {/* <Footer /> */}
       <GlobalStyle />
     </AppWrapper>

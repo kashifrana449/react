@@ -8,7 +8,7 @@
  */
 
 import produce from 'immer';
-import { CHANGE_USERNAME } from './constants';
+import { LOAD_PRODUCTS_SUCCESS } from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -19,9 +19,10 @@ export const initialState = {
 const homeReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case CHANGE_USERNAME:
+      case LOAD_PRODUCTS_SUCCESS:
         // Delete prefixed '@' from the github username
-        draft.username = action.username.replace(/@/gi, '');
+        console.log(action.prods);
+        draft.products = action.prods;
         break;
     }
   });

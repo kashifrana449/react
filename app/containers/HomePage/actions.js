@@ -15,7 +15,11 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import {
+  LOAD_PRODUCTS,
+  LOAD_PRODUCTS_FAIL,
+  LOAD_PRODUCTS_SUCCESS,
+} from './constants';
 
 /**
  * Changes the input field of the form
@@ -24,9 +28,23 @@ import { CHANGE_USERNAME } from './constants';
  *
  * @return {object} An action object with a type of CHANGE_USERNAME
  */
-export function changeUsername(username) {
+
+export function loadProducts() {
   return {
-    type: CHANGE_USERNAME,
-    username,
+    type: LOAD_PRODUCTS,
+  };
+}
+
+export function prodsLoaded(prods) {
+  return {
+    type: LOAD_PRODUCTS_SUCCESS,
+    prods,
+  };
+}
+
+export function prodsLoadedFail(err) {
+  return {
+    type: LOAD_PRODUCTS_FAIL,
+    err,
   };
 }

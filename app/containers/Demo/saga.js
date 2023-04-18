@@ -4,12 +4,12 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import request from 'utils/request';
 
-import {responseLoad, repoLoadingError} from './actions'
- import {LOAD_DATA} from './constants'
+import { responseLoad, repoLoadingError } from './actions';
+import { LOAD_DATA } from './constants';
 
 export function* getData() {
   // Select username from store
-  console.log('load data saga is called')
+  console.log('load data saga is called');
   const requestURL = 'https://dummyjson.com/products';
 
   try {
@@ -17,7 +17,7 @@ export function* getData() {
     const data = yield call(request, requestURL);
     yield put(responseLoad(data));
   } catch (err) {
-    console.log(err)
+    console.log(err);
     yield put(repoLoadingError(err));
   }
 }
@@ -25,5 +25,6 @@ export function* getData() {
 // Individual exports for testing
 export default function* demoSaga() {
   // See example in containers/HomePage/saga.js
+  console.log(LOAD_DATA);
   yield takeLatest(LOAD_DATA, getData);
 }

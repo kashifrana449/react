@@ -15,17 +15,28 @@ const selectLoginDomain = state => state.login || initialState;
  * Default selector used by Login
  */
 
-const makeSelectLogin = () =>
+const makeSelectUsername = () =>
   createSelector(
     selectLoginDomain,
-    substate => substate,
+    substate => substate.username,
+  );
+
+const makeSelectPassword = () =>
+  createSelector(
+    selectLoginDomain,
+    substate => substate.password,
   );
 
 const makeSelectIsAuthenticated = () =>
   createSelector(
     selectLoginDomain,
-    substate => substate.isAuthenticated
+    substate => substate.isAuthenticated,
   );
 
 // export default makeSelectLogin;
-export { selectLoginDomain, makeSelectIsAuthenticated, makeSelectLogin };
+export {
+  selectLoginDomain,
+  makeSelectIsAuthenticated,
+  makeSelectUsername,
+  makeSelectPassword,
+};

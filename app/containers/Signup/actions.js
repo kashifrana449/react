@@ -4,10 +4,17 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import { FORM_CHANGE, SIGN_UP } from './constants';
 
-export function defaultAction() {
+export function formChange(evt) {
   return {
-    type: DEFAULT_ACTION,
+    type: FORM_CHANGE,
+    evt,
+  };
+}
+
+export function signUp() {
+  return {
+    type: SIGN_UP,
   };
 }

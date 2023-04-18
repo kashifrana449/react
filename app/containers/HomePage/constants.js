@@ -9,4 +9,10 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+export const LOAD_PRODUCTS = 'boilerplate/Home/LOAD_PRODUCTS';
+export const LOAD_PRODUCTS_SUCCESS = 'boilerplate/Home/LOAD_PRODUCTS_SUCCESS';
+export const LOAD_PRODUCTS_FAIL = 'boilerplate/Home/LOAD_PRODUCTS_FAIL';
+
+export const LOAD_CATEGORIES = 'boilerplate/Home/LOAD_CATEGORIES';
+export const LOAD_SMARTPHONES = 'boilerplate/Home/LOAD_SMARTPHONES';
+export const LOAD_CARTS = 'boilerplate/Home/LOAD_CARTS';
