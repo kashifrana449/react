@@ -33,6 +33,7 @@ function TabPanel(props) {
   return (
     <div
       role="tabpanel"
+      style={{ width: '-webkit-fill-available' }}
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
@@ -63,12 +64,12 @@ function a11yProps(index) {
 export function HomePage({ dispatch, products }) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
+  console.log(products);
 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue);
     switch (newValue) {
       case 0:
         console.log(loadProducts());
@@ -83,42 +84,34 @@ export function HomePage({ dispatch, products }) {
         <meta name="home" content="homepage" />
       </Helmet>
       <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}>
-        >
         <Tabs
           orientation="vertical"
           // variant="scrollable"
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: 'divider' }}
+          style={{ width: 'max-content' }}
+          sx={{ borderRight: 1, borderColor: 'divider', width: 'max-content' }}
         >
           <Tab label="products" {...a11yProps(0)} />
-          <Tab label="categories" {...a11yProps(1)} />
-          <Tab label="smartphones" {...a11yProps(2)} />
-          <Tab label="carts" {...a11yProps(3)} />
-          <Tab label="posts" {...a11yProps(4)} />
-          <Tab label="users" {...a11yProps(5)} />
-          <Tab label="quotes" {...a11yProps(6)} />
+          <Tab label="carts" {...a11yProps(1)} />
+          <Tab label="posts" {...a11yProps(2)} />
+          <Tab label="users" {...a11yProps(3)} />
+          <Tab label="quotes" {...a11yProps(4)} />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <Prodlist />
+          <Prodlist products={products} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Item Three
-        </TabPanel>
-        <TabPanel value={value} index={3}>
           Item Four
         </TabPanel>
-        <TabPanel value={value} index={4}>
+        <TabPanel value={value} index={2}>
           Item Five
         </TabPanel>
-        <TabPanel value={value} index={5}>
+        <TabPanel value={value} index={3}>
           Item Six
         </TabPanel>
-        <TabPanel value={value} index={6}>
+        <TabPanel value={value} index={4}>
           Item Seven
         </TabPanel>
       </Box>
@@ -128,7 +121,7 @@ export function HomePage({ dispatch, products }) {
 
 HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  products: PropTypes.object,
+  products: PropTypes.any,
 };
 
 const mapStateToProps = createStructuredSelector({

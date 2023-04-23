@@ -47,7 +47,7 @@ export function Login({
   const theme = createTheme();
 
   if (isAuthenticated) {
-    return <Redirect to="/features" />;
+    return <Redirect to="/home" />;
   }
 
   return (

@@ -23,8 +23,8 @@ import Footer from 'components/Footer';
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
+  // max-width: calc(768px + 16px * 2);
+  // margin: 0 auto;
   display: flex;
   min-height: 100%;
   padding: 0 16px;
@@ -40,11 +40,11 @@ export default function App() {
       {/* <Header /> */}
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={HomePage} />
+          <Route path="/home" component={HomePage} />
           <Route path="/features" component={FeaturePage} />
           <Route path="/demo" component={demo} />
           <Route path="/signup" component={signup} />
-          <Route path="/login" component={login} />
+          <Route exact path="/" component={login} />
           <Route path="" component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

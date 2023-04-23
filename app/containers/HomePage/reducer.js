@@ -21,7 +21,6 @@ const homeReducer = (state = initialState, action) =>
     switch (action.type) {
       case LOAD_PRODUCTS_SUCCESS:
         // Delete prefixed '@' from the github username
-        console.log(action.prods);
         draft.products = action.prods;
         break;
     }
